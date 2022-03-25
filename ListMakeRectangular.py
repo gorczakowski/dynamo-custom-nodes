@@ -1,11 +1,8 @@
 # Created by Krzysztof Gorczakowski, 2020
 # https://github.com/gorczakowski
 
-def toList(obj):
-    if isinstance(obj, list):
-        return obj
-    else:
-        return [obj]
+def to_list(obj):
+	return obj if hasattr(obj, '__iter__') else list(obj)
 
 def lengthen(obj, length, f_fill):
     obj_len = len(obj)
@@ -22,7 +19,7 @@ def lengthen(obj, length, f_fill):
 input_lists = IN[0]
 f_fill = IN[1]
 
-lsts = [toList(i) for i in input_lists]
+lsts = [to_list(i) for i in input_lists]
 max_len = max(len(lst) for lst in lsts)
 
 try:

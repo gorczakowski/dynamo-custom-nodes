@@ -1,11 +1,8 @@
 # Created by Krzysztof Gorczakowski, 2020
 # https://github.com/gorczakowski
 
-def toList(obj):
-    if isinstance(obj, list):
-        return obj
-    else:
-        return [obj]
+def to_list(obj):
+	return obj if hasattr(obj, '__iter__') else list(obj)
 
 def trypop(lst, alt_item):
     try:
@@ -19,9 +16,9 @@ def tryindex(lst, index):
     except:
         return False
 
-lst = toList(IN[0])
-mask = toList(IN[1])
-stack = toList(IN[2])
+lst = to_list(IN[0])
+mask = to_list(IN[1])
+stack = to_list(IN[2])
 
 try:
     OUT = [trypop(stack, lst[i]) if tryindex(mask, i) else lst[i] for i in range(len(lst))]
